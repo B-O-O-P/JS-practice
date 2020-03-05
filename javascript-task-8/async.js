@@ -18,7 +18,7 @@ function runParallel(jobs, parallelNum, timeout = 1000) {
             resolve([]);
         }
         const result = [];
-        const count = Math.min(jobs.length, parallelNum);
+        const parallelCount = Math.min(jobs.length, parallelNum);
 
         let currentJobIndex = 0;
 
@@ -42,7 +42,7 @@ function runParallel(jobs, parallelNum, timeout = 1000) {
             }
         }
 
-        for (let i = 0; i < count; i++) {
+        for (let i = 0; i < parallelCount; i++) {
             startJob(currentJobIndex++);
         }
     });
