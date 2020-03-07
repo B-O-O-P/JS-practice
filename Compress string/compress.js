@@ -1,25 +1,21 @@
 function compress(str) {
-    const result = [];
-    let previousLetter = '';
-    let counter = 0;
+    if (!str.length) {
+        return str;
+    }
 
-    str.split('').forEach(letter => {
-        if (previousLetter === letter) {
+    let result = '';
+    let previousLetter = str[0];
+    let counter = 1;
+
+    for (let i = 1; i < str.length - 1; ++i) {
+        if (str[i] === previousLetter) {
             counter++;
         } else {
-            result.push(previousLetter);
-
-            if (counter) {
-                result.push(counter)
-            }
-
+            result = `${result}${previousLetter}${counter}`;
+            previousLetter = str[i];
             counter = 1;
         }
-        if (result.length > str.length) {
-            return str;
-        }
-        previousLetter = letter;
-    });
+    }
 
-    return result.concat([previousLetter, counter]).join('');
+    return `${result}${previousLetter}${counter}`;
 }
