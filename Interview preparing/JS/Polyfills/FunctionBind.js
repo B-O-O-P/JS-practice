@@ -1,7 +1,7 @@
 /*SIMPLE*/
 if (!Function.prototype.bind) {
     Function.prototype.bind = function (scope) {
-        var fn = this;
+        let fn = this;
         return function () {
             return fn.apply(scope, arguments)
         }
